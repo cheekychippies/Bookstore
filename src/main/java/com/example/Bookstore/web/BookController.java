@@ -14,8 +14,7 @@ import com.example.Bookstore.repositories.BookRepository;
 public class BookController {
 	
 	@Autowired
-	private BookRepository bookRepository;
-	
+	private BookRepository bookRepository; 
 	
 	@GetMapping("booklist")
 	public String showBooks(Model model) {
@@ -37,7 +36,7 @@ public class BookController {
 		bookRepository.deleteById(id);
 	 return "redirect:/booklist";
 	}
-	 
+	  
 	@PostMapping("saveBook")
 	public String saveBook(Book book) {
 		bookRepository.save(book); 

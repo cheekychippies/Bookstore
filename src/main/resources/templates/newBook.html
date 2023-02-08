@@ -19,8 +19,12 @@
 			<label for="isbn">ISBN</label>
 			<input type="text" id="isbn" th:field="*{isbn}" />
 		
-			<label for="author">Publication Year</label>
-			<input type="text" id="publicationYear" th:field="*{publicationYear}" />	
+			<label for="publicationYear">Publication Year</label>
+			<input type="text" id="publicationYear" th:field="*{publicationYear}" />
+			<label>Category</label>
+			<select id="category" th:field="*{category}">
+       			<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    		</select>	
 			
 			<input type="submit" value="Save"></input>
 			
