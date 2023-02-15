@@ -31,7 +31,7 @@ public class BookstoreApplication {
 	}
 	  
 	  
-
+ 
 	@Bean
 	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository) {return (args) -> {
 		
@@ -42,9 +42,9 @@ public class BookstoreApplication {
 		
 	
 		//Book(String title, String author, String isbn, int publicationYear, int price) {
-		Book book1 = new Book("Ernest Hemingway", "A Farewell to Arms","123",1929,12, categoryRepository.findByName("Mystery").get(0)); 
+		Book book1 = new Book("A Farewell to Arms","Ernest Hemingway","123",1929,12, categoryRepository.findByName("Mystery").get(0)); 
 		bookRepository.save(book1);
-		bookRepository.save(new Book ("George Orwell", "Animal Farm","3456",1945,20, categoryRepository.findByName("Horror").get(0)));	
+		bookRepository.save(new Book ("Animal Farm","George Orwell","3456",1945,20, categoryRepository.findByName("Horror").get(0)));	
 		
 		log.info("Tulostetaan kirjat");
 		for (Book book : bookRepository.findAll()) {

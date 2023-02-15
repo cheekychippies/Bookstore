@@ -29,7 +29,7 @@ public class Book {
 	 
 	public Book() { 
 		super(); 
-	} 
+	}  
 
 	public Book(String title, String author, String isbn, int publicationYear, int price) {
 		super();

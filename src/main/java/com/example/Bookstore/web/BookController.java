@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.Bookstore.model.Book;
 import com.example.Bookstore.repositories.BookRepository;
+import com.example.Bookstore.repositories.CategoryRepository;
 
 @Controller
 public class BookController {
 	
 	@Autowired
 	private BookRepository bookRepository; 
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	@GetMapping("booklist")
 	public String showBooks(Model model) {
@@ -24,11 +27,13 @@ public class BookController {
 	@GetMapping("addBook")
 	public String newBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "newBook";  
 	}
 	@GetMapping("edit/{id}")
 	public String editBook(@PathVariable("id")Long id, Model model ) {
 		model.addAttribute("book" , bookRepository.findById(id));
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "editBook";
 	}
 	@GetMapping("delete/{id}")
