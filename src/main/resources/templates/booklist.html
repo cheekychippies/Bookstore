@@ -6,6 +6,9 @@
 </head>
 <body>
 	<h1>Books</h1>
+	<i>Tervehdys <b sec:authentication="name"></b><br>
+	<a href="/logout"><i>Kirjaudu ulos</i></a>
+	
     <table>
 		<tr>
 			<th>ID</th>
@@ -25,12 +28,13 @@
     		<td th:text="${book.publicationYear}"></td>	
     		<td th:text="${book.category.name}"></td>
     		
-    		<td><a th:href="@{/delete/{id}(id=${book.id})}">Poista</a></td>
-    		<td><a th:href="@{/edit/{id}(id=${book.id})}">Muokkaa</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')" ><a th:href="@{/delete/{id}(id=${book.id})}">Poista</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')" ><a th:href="@{/edit/{id}(id=${book.id})}">Muokkaa</a></td>
     		
     	</tr>
      </table>
-  	<a href="/addBook">Lisää uusi kirja</a>	
+  	<a sec:authorize="hasAuthority('ADMIN')" href="/addBook">Lisää uusi kirja</a>	
+  	
      
 </body>
 </html>
